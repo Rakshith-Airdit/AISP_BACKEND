@@ -94,8 +94,7 @@ const isBase64 = (str) => {
   return !(str.startsWith("http://") || str.startsWith("https://"));
 };
 
-const connectionString =
-  cds.env.requires.azure_storage?.connectionString;
+const connectionString = cds.env.requires.azure_storage?.connectionString;
 
 const containerName = cds.env.requires.azure_storage?.container_name;
 
