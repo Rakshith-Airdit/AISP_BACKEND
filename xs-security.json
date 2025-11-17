@@ -1,0 +1,127 @@
+{
+  "xsappname": "AISP_PO_ASN_FLOW",
+  "tenant-mode": "dedicated",
+  "description": "Application descriptor for AISP Vendor Portal",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.User",
+      "description": "Default user role"
+    }
+  ],
+  "role-templates": [
+      {
+      "name": "AISP_B_INV_MANAGEMENT_BYR",
+      "description": "Buyer and User can create requests, and see request Statuses",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_B_INV_APPROVAL_APVR",
+      "description": "Approvers can Approve and Reject the Request",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_B_REG_APPROVAL_APVR",
+      "description": "Approvers can Approve, Reject and SendBack",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_S_PO_CONFIRMATION_SUPPLIER",
+      "description": "Suppliers can confirm POs",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_S_ASN_CREATION_SUPPLIER",
+      "description": "Suppliers can create ASN",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_S_SES_CREATION_SUPPLIER",
+      "description": "Suppliers can create SES",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_B_SES_APPROVAL_APVR",
+      "description": "Approvers will approve SES",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_S_INVOICE_CREATION_SUPPLIER",
+      "description": "Suppliers can submit Invoice(Without OCR)",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_B_INVOICE_APPROVAL_APVR",
+      "description": "Approvers can approve Invoice(Without OCR)",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_S_INVOICE_CREATION_SUPPLIER",
+      "description": "Suppliers can submit Invoice(NonPO - OCR)",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_B_CODER_CODER",
+      "description": "Coder will approve",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_B_INVOICE_APPROVAL_SUPPLIER",
+      "description": "Approvers can approve Invoice(NonPO - OCR)",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_S_CREATE_INVOICE_SES_SUPPLIER",
+      "description": "Suppliers can create SES Invoice",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_B_SES_VIM_APPROVAL_APVR",
+      "description": "Approvers can approve SES Invoice",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_S_INVOICE_MONITORING_SUPPLIER",
+      "description": "Suppliers can Monitor the Invoices",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_B_RFQ_CREATION_AND_PRICE_COMPARISION_BYR",
+      "description": "Buyer can create RFQs",
+      "scope-references": ["$XSAPPNAME.User"]
+    },
+    {
+      "name": "AISP_S_RFQ_QUOTATION_SUB_SUPPLIER",
+      "description": "Suppliers can Submit Quotations",
+      "scope-references": ["$XSAPPNAME.User"]
+    }
+  ],
+  "role-collections": [
+        {
+      "name": "AISP_B_RegApproval_Collection",
+      "description": "Access to Registration Approval on buyer side",
+      "role-template-references": [
+        "$XSAPPNAME.AISP_B_INVOICE_APPROVAL_APVR",
+        "$XSAPPNAME.AISP_B_SES_VIM_APPROVAL_APVR",
+        "$XSAPPNAME.AISP_B_INVOICE_APPROVAL_APVR"
+      ]
+    },
+    {
+      "name": "AISP_B_Coder_Collection",
+      "description": "Access for Coders to approve invoices",
+      "role-template-references": ["$XSAPPNAME.AISP_B_CODER_CODER"]
+    },
+    {
+      "name": "AISP_S_Supplier_Collection",
+      "description": "Access for all Supplier functionalities",
+      "role-template-references": [
+        "$XSAPPNAME.AISP_S_PO_CONFIRMATION_SUPPLIER",
+        "$XSAPPNAME.AISP_S_ASN_CREATION_SUPPLIER",
+        "$XSAPPNAME.AISP_S_SES_CREATION_SUPPLIER",
+        "$XSAPPNAME.AISP_S_INVOICE_CREATION_SUPPLIER",
+        "$XSAPPNAME.AISP_S_CREATE_INVOICE_SES_SUPPLIER",
+        "$XSAPPNAME.AISP_S_INVOICE_MONITORING_SUPPLIER",
+        "$XSAPPNAME.AISP_S_RFQ_QUOTATION_SUB_SUPPLIER"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+        <edmx:Include Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://103.194.234.17:8010/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value"
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zp_mm_pohead_srv" xml:lang="en" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+                <EntityType Name="ZC_MM_ESLLType" sap:label="Consumption view for Service PO" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="Packno"/>
+                        <PropertyRef Name="Introw"/>
+                    </Key>
+                    <Property Name="Packno" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Package number"/>
+                    <Property Name="Introw" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Line" sap:quickinfo="Line Number"/>
+                    <Property Name="Extrow" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Line Number"/>
+                    <Property Name="Srvpos" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Activity number" sap:quickinfo="Activity Number"/>
+                    <Property Name="SubPackno" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Package" sap:quickinfo="Subpackage number"/>
+                    <Property Name="Ktext1" Type="Edm.String" MaxLength="40" sap:label="Short Text"/>
+                    <Property Name="Menge" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Quantity" sap:quickinfo="Quantity with Sign"/>
+                    <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                    <Property Name="Brtwr" Type="Edm.Decimal" Precision="12" Scale="3" sap:label="Gross Price"/>
+                    <Property Name="waers" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                </EntityType>
+                <EntityType Name="ZP_MM_POHEADType" sap:label="Projection View for PO header" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="Ebeln"/>
+                    </Key>
+                    <Property Name="confirm_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="to_poitem_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
+                    <Property Name="Ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="User of person who created a purchasing document"/>
+                    <Property Name="Lifnr" Type="Edm.String" MaxLength="10"/>
+                    <Property Name="Ekorg" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Purch. organization" sap:quickinfo="Purchasing organization"/>
+                    <Property Name="name1" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+                    <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                    <Property Name="Bedat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Document Date" sap:quickinfo="Purchasing Document Date"/>
+                    <Property Name="zdays" Type="Edm.Int32"/>
+                    <Property Name="Amount" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Waers" sap:variable-scale="true"/>
+                    <Property Name="Status" Type="Edm.String" MaxLength="10"/>
+                    <NavigationProperty Name="to_poitem" Relationship="cds_zp_mm_pohead_srv.assoc_19A92C9613E7EAEE1E76280C39026EBB" FromRole="FromRole_assoc_19A92C9613E7EAEE1E76280C39026EBB" ToRole="ToRole_assoc_19A92C9613E7EAEE1E76280C39026EBB"/>
+                </EntityType>
+                <EntityType Name="ZP_MM_POITEMType" sap:label="Projection View for PO item" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="Ebeln"/>
+                        <PropertyRef Name="Ebelp"/>
+                    </Key>
+                    <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                    <Property Name="Ebeln" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number" sap:creatable="false" sap:updatable="false"/>
+                    <Property Name="Ebelp" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Item Number of Purchasing Document"/>
+                    <Property Name="Txz01" Type="Edm.String" MaxLength="40" sap:label="Short Text"/>
+                    <Property Name="Type" Type="Edm.String" MaxLength="8"/>
+                    <Property Name="Matnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                    <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                    <Property Name="Menge" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Meins" sap:label="Order Quantity" sap:quickinfo="Purchase Order Quantity"/>
+                    <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+                    <Property Name="Packno" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Package number"/>
+                    <Property Name="SubPackno" Type="Edm.String" MaxLength="10" sap:display-format="NonNegative" sap:label="Package" sap:quickinfo="Subpackage number"/>
+                    <Property Name="Confirmedqty" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Meins" sap:label="Quantity" sap:quickinfo="Quantity as Per Supplier Confirmation"/>
+                    <Property Name="eindt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Delivery date" sap:quickinfo="Item delivery date"/>
+                    <Property Name="knumv" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Doc. Condition No." sap:quickinfo="Number of the Document Condition"/>
+                    <Property Name="Discount" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="waers" sap:variable-scale="true" sap:label="Value" sap:quickinfo="Condition Value"/>
+                    <Property Name="Taxper" Type="Edm.Decimal" Precision="12" Scale="2"/>
+                    <Property Name="Taxval" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="waers" sap:variable-scale="true" sap:label="Value" sap:quickinfo="Condition Value"/>
+                    <Property Name="Rate" Type="Edm.Decimal" Precision="12" Scale="2"/>
+                    <Property Name="Iamount" Type="Edm.Decimal" Precision="12" Scale="2" sap:unit="waers" sap:variable-scale="true"/>
+                    <Property Name="Total" Type="Edm.Decimal" Precision="12" Scale="2" sap:unit="waers" sap:variable-scale="true"/>
+                    <Property Name="Kposn" Type="Edm.String" MaxLength="5"/>
+                    <Property Name="waers" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                    <Property Name="Status" Type="Edm.String" MaxLength="9"/>
+                    <NavigationProperty Name="to_esll" Relationship="cds_zp_mm_pohead_srv.assoc_24EED376D2851D47DDD16CB1721D1A3D" FromRole="FromRole_assoc_24EED376D2851D47DDD16CB1721D1A3D" ToRole="ToRole_assoc_24EED376D2851D47DDD16CB1721D1A3D"/>
+                    <NavigationProperty Name="to_esll2" Relationship="cds_zp_mm_pohead_srv.assoc_DE44E9D45753922D752B30B7956BDBCA" FromRole="FromRole_assoc_DE44E9D45753922D752B30B7956BDBCA" ToRole="ToRole_assoc_DE44E9D45753922D752B30B7956BDBCA"/>
+                    <NavigationProperty Name="to_pohead" Relationship="cds_zp_mm_pohead_srv.assoc_102C1D612617C2E57A4F7CA3BB11BAC0" FromRole="FromRole_assoc_102C1D612617C2E57A4F7CA3BB11BAC0" ToRole="ToRole_assoc_102C1D612617C2E57A4F7CA3BB11BAC0"/>
+                </EntityType>
+                <EntityType Name="SAP__Currency" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="CurrencyCode"/>
+                    </Key>
+                    <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
+                    <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
+                    <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Short text"/>
+                    <Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Decimals"/>
+                </EntityType>
+                <EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+                    <Key>
+                        <PropertyRef Name="UnitCode"/>
+                    </Key>
+                    <Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:semantics="unit-of-measure"/>
+                    <Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
+                    <Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Commercial"/>
+                    <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Measurement Unit Txt"/>
+                    <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
+                </EntityType>
+                <ComplexType Name="DummyFunctionImportResult">
+                    <Property Name="IsInvalid" Type="Edm.Boolean" sap:label="TRUE"/>
+                </ComplexType>
+                <Association Name="assoc_24EED376D2851D47DDD16CB1721D1A3D" sap:content-version="1">
+                    <End Type="cds_zp_mm_pohead_srv.ZP_MM_POITEMType" Multiplicity="1" Role="FromRole_assoc_24EED376D2851D47DDD16CB1721D1A3D"/>
+                    <End Type="cds_zp_mm_pohead_srv.ZC_MM_ESLLType" Multiplicity="*" Role="ToRole_assoc_24EED376D2851D47DDD16CB1721D1A3D"/>
+                </Association>
+                <Association Name="assoc_DE44E9D45753922D752B30B7956BDBCA" sap:content-version="1">
+                    <End Type="cds_zp_mm_pohead_srv.ZP_MM_POITEMType" Multiplicity="1" Role="FromRole_assoc_DE44E9D45753922D752B30B7956BDBCA"/>
+                    <End Type="cds_zp_mm_pohead_srv.ZC_MM_ESLLType" Multiplicity="*" Role="ToRole_assoc_DE44E9D45753922D752B30B7956BDBCA"/>
+                </Association>
+                <Association Name="assoc_102C1D612617C2E57A4F7CA3BB11BAC0" sap:content-version="1">
+                    <End Type="cds_zp_mm_pohead_srv.ZP_MM_POITEMType" Multiplicity="1" Role="FromRole_assoc_102C1D612617C2E57A4F7CA3BB11BAC0"/>
+                    <End Type="cds_zp_mm_pohead_srv.ZP_MM_POHEADType" Multiplicity="1" Role="ToRole_assoc_102C1D612617C2E57A4F7CA3BB11BAC0"/>
+                </Association>
+                <Association Name="assoc_19A92C9613E7EAEE1E76280C39026EBB" sap:content-version="1">
+                    <End Type="cds_zp_mm_pohead_srv.ZP_MM_POHEADType" Multiplicity="1" Role="FromRole_assoc_19A92C9613E7EAEE1E76280C39026EBB">
+                        <OnDelete Action="Cascade"/>
+                    </End>
+                    <End Type="cds_zp_mm_pohead_srv.ZP_MM_POITEMType" Multiplicity="*" Role="ToRole_assoc_19A92C9613E7EAEE1E76280C39026EBB"/>
+                    <ReferentialConstraint>
+                        <Principal Role="FromRole_assoc_19A92C9613E7EAEE1E76280C39026EBB">
+                            <PropertyRef Name="Ebeln"/>
+                        </Principal>
+                        <Dependent Role="ToRole_assoc_19A92C9613E7EAEE1E76280C39026EBB">
+                            <PropertyRef Name="Ebeln"/>
+                        </Dependent>
+                    </ReferentialConstraint>
+                </Association>
+                <EntityContainer Name="cds_zp_mm_pohead_srv_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                    <EntitySet Name="SAP__Currencies" EntityType="cds_zp_mm_pohead_srv.SAP__Currency" sap:content-version="1"/>
+                    <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zp_mm_pohead_srv.SAP__UnitOfMeasure" sap:content-version="1"/>
+                    <EntitySet Name="ZC_MM_ESLL" EntityType="cds_zp_mm_pohead_srv.ZC_MM_ESLLType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                    <EntitySet Name="ZP_MM_POHEAD" EntityType="cds_zp_mm_pohead_srv.ZP_MM_POHEADType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                    <EntitySet Name="ZP_MM_POITEM" EntityType="cds_zp_mm_pohead_srv.ZP_MM_POITEMType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                    <AssociationSet Name="assoc_DE44E9D45753922D752B30B7956BDBCA" Association="cds_zp_mm_pohead_srv.assoc_DE44E9D45753922D752B30B7956BDBCA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                        <End EntitySet="ZP_MM_POITEM" Role="FromRole_assoc_DE44E9D45753922D752B30B7956BDBCA"/>
+                        <End EntitySet="ZC_MM_ESLL" Role="ToRole_assoc_DE44E9D45753922D752B30B7956BDBCA"/>
+                    </AssociationSet>
+                    <AssociationSet Name="assoc_19A92C9613E7EAEE1E76280C39026EBB" Association="cds_zp_mm_pohead_srv.assoc_19A92C9613E7EAEE1E76280C39026EBB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                        <End EntitySet="ZP_MM_POHEAD" Role="FromRole_assoc_19A92C9613E7EAEE1E76280C39026EBB"/>
+                        <End EntitySet="ZP_MM_POITEM" Role="ToRole_assoc_19A92C9613E7EAEE1E76280C39026EBB"/>
+                    </AssociationSet>
+                    <AssociationSet Name="assoc_24EED376D2851D47DDD16CB1721D1A3D" Association="cds_zp_mm_pohead_srv.assoc_24EED376D2851D47DDD16CB1721D1A3D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                        <End EntitySet="ZP_MM_POITEM" Role="FromRole_assoc_24EED376D2851D47DDD16CB1721D1A3D"/>
+                        <End EntitySet="ZC_MM_ESLL" Role="ToRole_assoc_24EED376D2851D47DDD16CB1721D1A3D"/>
+                    </AssociationSet>
+                    <AssociationSet Name="assoc_102C1D612617C2E57A4F7CA3BB11BAC0" Association="cds_zp_mm_pohead_srv.assoc_102C1D612617C2E57A4F7CA3BB11BAC0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                        <End EntitySet="ZP_MM_POITEM" Role="FromRole_assoc_102C1D612617C2E57A4F7CA3BB11BAC0"/>
+                        <End EntitySet="ZP_MM_POHEAD" Role="ToRole_assoc_102C1D612617C2E57A4F7CA3BB11BAC0"/>
+                    </AssociationSet>
+                    <FunctionImport Name="confirm" ReturnType="cds_zp_mm_pohead_srv.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zp_mm_pohead_srv.ZP_MM_POHEADType" sap:applicable-path="confirm_ac">
+                        <Parameter Name="Ebeln" Type="Edm.String" Mode="In" MaxLength="10" sap:label="Purchasing Document"/>
+                        <Parameter Name="Ebelp" Type="Edm.String" Mode="In" MaxLength="5" sap:label="Item"/>
+                    </FunctionImport>
+                </EntityContainer>
+                <Annotations Target="cds_zp_mm_pohead_srv.cds_zp_mm_pohead_srv_Entities"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                </Annotations>
+                <Annotations Target="cds_zp_mm_pohead_srv.cds_zp_mm_pohead_srv_Entities/ZP_MM_POHEAD"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.FilterRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonFilterableProperties">
+                                <Collection>
+                                    <PropertyPath>confirm_ac</PropertyPath>
+                                    <PropertyPath>Delete_mc</PropertyPath>
+                                    <PropertyPath>Update_mc</PropertyPath>
+                                    <PropertyPath>to_poitem_oc</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.NavigationRestrictions">
+                        <Record>
+                            <PropertyValue Property="RestrictedProperties">
+                                <Collection>
+                                    <Record>
+                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_poitem"/>
+                                        <PropertyValue Property="InsertRestrictions">
+                                            <Record>
+                                                <PropertyValue Property="Insertable" Path="to_poitem_oc"/>
+                                            </Record>
+                                        </PropertyValue>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.SortRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonSortableProperties">
+                                <Collection>
+                                    <PropertyPath>confirm_ac</PropertyPath>
+                                    <PropertyPath>Delete_mc</PropertyPath>
+                                    <PropertyPath>Update_mc</PropertyPath>
+                                    <PropertyPath>to_poitem_oc</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="cds_zp_mm_pohead_srv.cds_zp_mm_pohead_srv_Entities/ZP_MM_POITEM"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Capabilities.FilterRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonFilterableProperties">
+                                <Collection>
+                                    <PropertyPath>Delete_mc</PropertyPath>
+                                    <PropertyPath>Update_mc</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="Capabilities.SortRestrictions">
+                        <Record>
+                            <PropertyValue Property="NonSortableProperties">
+                                <Collection>
+                                    <PropertyPath>Delete_mc</PropertyPath>
+                                    <PropertyPath>Update_mc</PropertyPath>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="cds_zp_mm_pohead_srv.cds_zp_mm_pohead_srv_Entities"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                        <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                            <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="SAP__CodeList.CurrencyCodes">
+                        <Record>
+                            <PropertyValue Property="Url" String="./$metadata"/>
+                            <PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
+                        </Record>
+                    </Annotation>
+                    <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                        <Record>
+                            <PropertyValue Property="Url" String="./$metadata"/>
+                            <PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/>
+                        </Record>
+                    </Annotation>
+                </Annotations>
+                <Annotations Target="cds_zp_mm_pohead_srv.SAP__Currency/CurrencyCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="SAP__common.Text" Path="Text"/>
+                    <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                    <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+                </Annotations>
+                <Annotations Target="cds_zp_mm_pohead_srv.SAP__UnitOfMeasure/UnitCode"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="SAP__common.Text" Path="Text"/>
+                    <Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
+                    <Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
+                    <Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
+                </Annotations>
+                <Annotations Target="cds_zp_mm_pohead_srv.SAP__UnitOfMeasure"
+                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                    <Annotation Term="SAP__core.AlternateKeys">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Key">
+                                    <Collection>
+                                        <Record>
+                                            <PropertyValue Property="Name" Path="ExternalCode"/>
+                                            <PropertyValue Property="Alias" String="ExternalCode"/>
+                                        </Record>
+                                    </Collection>
+                                </PropertyValue>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Annotations>
+                <atom:link rel="self" href="http://103.194.234.17:8010/sap/opu/odata/sap/ZP_MM_POHEAD_BND/$metadata"
+                    xmlns:atom="http://www.w3.org/2005/Atom"/>
+                    <atom:link rel="latest-version" href="http://103.194.234.17:8010/sap/opu/odata/sap/ZP_MM_POHEAD_BND/$metadata"
+                        xmlns:atom="http://www.w3.org/2005/Atom"/>
+                    </Schema>
+                </edmx:DataServices>
+            </edmx:Edmx>
