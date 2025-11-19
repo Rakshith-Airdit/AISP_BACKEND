@@ -181,6 +181,16 @@ entity Notifications : managed {
     Status             : String;
 }
 
+
+type SupplierDetails {
+    SupplierCode  : String;  // BusinessPartner
+    SupplierName  : String;  // BusinessPartnerFullName
+    SupplierEmail : String;  // EmailAddress
+    SupplierGroup : String;  // BusinessPartnerGrouping
+    Country       : String;  // Country
+}
+
+
 //PO VIM WITH OCR
 entity VIM_PO_OCR_HEAD {
     key REQUEST_NO             : Integer;
