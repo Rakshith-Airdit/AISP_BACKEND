@@ -182,11 +182,11 @@ entity Notifications : managed {
 }
 
 
-type SupplierDetails {
-    SupplierCode  : String;  // BusinessPartner
+entity SupplierProfileDetails {
+    SUPPLIER_CODE  : Integer;
     SupplierName  : String;  // BusinessPartnerFullName
-    SupplierEmail : String;  // EmailAddress
-    SupplierGroup : String;  // BusinessPartnerGrouping
+    Email : String;  // EmailAddress
+    // SupplierGroup : String;  // BusinessPartnerGrouping
     Country       : String;  // Country
 }
 
