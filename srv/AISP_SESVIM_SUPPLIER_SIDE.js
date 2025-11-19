@@ -29,9 +29,8 @@ const { parse } = require("tough-cookie");
 const { mongoRead } = require("./Library/helper");
 const { Decimal128 } = require("mongodb");
 
-const connectionString =
-  cds.env.requires.azure_storage?.connectionString;
-const containerName = cds.env.requires.azure_storage?.container_name;
+const connectionString = process.env.AZURE_STORAGE_CONTAINER_STRING;
+const containerName = process.env.AZURE_STORAGE_CONNECTION_NAME;
 
 // Allowed MIME Types and Extensions
 const mimeToExtensionMap = {
@@ -120,7 +119,7 @@ function toDecimal(value) {
 }
 
 //new00------------------
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/15 * * * *", async () => {
   try {
     // Call functions directly without db parameter
     await fetchAndStoreSESHead();
@@ -1229,6 +1228,11 @@ module.exports = async (srv) => {
 
     // Step 1: Fetch base items from API collection
     const items = await collection.find(filter).toArray();
+
+    // Early return if no items found
+    if (!items || items.length === 0) {
+      return [];
+    }
 
     // Step 2: Build override map
     const overrideDocs = await overrides

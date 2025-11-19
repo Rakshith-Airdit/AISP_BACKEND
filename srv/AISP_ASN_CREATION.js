@@ -441,7 +441,7 @@ async function fetchAndStoreSHIPHEAD() {
   }
 }
 
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/15 * * * *", async () => {
   await fetchAndStoreASNItem();
   await fetchAndStoreASNHead();
   await fetchAndStoreSHIPHEAD();

@@ -19,9 +19,8 @@ const { buildMongoQuery } = require("../srv/Library/MongoHelper");
 const { buildQuery } = require("../srv/Library/Mongoquery");
 const { sendPostPayloadToSAPforSES } = require("./Library/sapBatchSES");
 
-const connectionString =
-  cds.env.requires.azure_storage?.connectionString;
-const containerName = cds.env.requires.azure_storage?.container_name;
+const connectionString = process.env.AZURE_STORAGE_CONTAINER_STRING;
+const containerName = process.env.AZURE_STORAGE_CONNECTION_NAME;
 
 const mimeToExtensionMap = {
   "image/jpeg": "jpg",
@@ -372,7 +371,6 @@ module.exports = async (srv) => {
   srv.on("READ", "SES_Item", async (req) => {
     const { database } = await getConnection();
     const itemCollection = database.collection("SES_ITEM");
-
 
     try {
       // Build MongoDB query from OData parameters

@@ -22,7 +22,6 @@ function convertSAPDate(sapDate) {
   return new Date(sapDate);
 }
 
-const PAYMENT_SYNC_INTERVAL = "*/15 * * * *"; // Every 15 minutes
 const BATCH_SIZE = 500; // Reduced from 1000 to handle timeout issues
 
 async function fetchAndStorePaymentMonHead() {
@@ -141,7 +140,7 @@ async function initializePaymentSync() {
     await fetchAndStorePaymentMonHead();
 
     // Schedule recurring sync
-    cron.schedule(PAYMENT_SYNC_INTERVAL, async () => {
+    cron.schedule("*/15 * * * *", async () => {
       try {
         await fetchAndStorePaymentMonHead();
       } catch (err) {

@@ -21,7 +21,7 @@ async function normalizeObject(obj, req) {
 
   function recurse(val, key) {
     if (Array.isArray(val)) {
-      return val.map(v => recurse(v, key));
+      return val.map((v) => recurse(v, key));
     } else if (val && typeof val === "object") {
       const out = {};
       for (const [k, v] of Object.entries(val)) {
@@ -48,7 +48,8 @@ function castToType(value, fieldType) {
     case "cds.Integer":
     case "cds.Int32":
     case "cds.Int64":
-      if (typeof value === "number") return Decimal128.fromString(value.toString());
+      if (typeof value === "number")
+        return Decimal128.fromString(value.toString());
       if (typeof value === "string" && /^[0-9.+-]+$/.test(value)) {
         return Decimal128.fromString(value);
       }
@@ -528,8 +529,8 @@ module.exports = {
         }
       }
       // return query;
-      let state =  await normalizeObject(query,req);
-      return state
+      let state = await normalizeObject(query, req);
+      return state;
     }
 
     // ------------------------------
@@ -553,6 +554,9 @@ module.exports = {
     // ------------------------------
     // handle $search dynamically
     // ------------------------------
+    // ------------------------------
+    // handle $search dynamically
+    // ------------------------------
     if (req.query?.SELECT.search) {
       let searchTerm = "";
       try {
@@ -563,12 +567,18 @@ module.exports = {
 
       const columns = req.query.SELECT?.columns || [];
       const searchableFields = columns.map((c) => c?.ref?.[0]).filter(Boolean);
-      const searchConditions = searchableFields.map((f) => {
-        return { [f]: { $regex: searchTerm, $options: "i" } };
-      });
 
-      mongoFilter.$and = mongoFilter.$and || [];
-      mongoFilter.$and.push({ $or: searchConditions });
+      // Only add search conditions if there are searchable fields
+      if (searchableFields.length > 0) {
+        const searchConditions = searchableFields.map((f) => {
+          return { [f]: { $regex: searchTerm, $options: "i" } };
+        });
+
+        mongoFilter.$and = mongoFilter.$and || [];
+        mongoFilter.$and.push({ $or: searchConditions });
+      }
+      // If no searchable fields found, you might want to log this or handle differently
+      // but don't push an empty $or array
     }
 
     // ------------------------------

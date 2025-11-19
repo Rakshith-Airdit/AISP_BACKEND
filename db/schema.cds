@@ -167,8 +167,7 @@ entity SUPPLIER_PROFILE_BANK {
 using { managed } from '@sap/cds/common';
 //@odata.draft.enabled //require for automtic draft enablement with odata and cds
 
-entity Notifications : managed {
-   
+entity Notifications : managed {   
     key NotificationID : Integer;
     NotificationType   : String;
     Title              : String;
@@ -180,7 +179,6 @@ entity Notifications : managed {
     ValidTo            : Date;
     DateTime           : Timestamp;
     Status             : String;
-
 }
 
 //PO VIM WITH OCR

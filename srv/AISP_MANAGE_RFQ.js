@@ -1965,7 +1965,7 @@ module.exports = cds.service.impl(async function (srv) {
   };
 
   // Main cron job
-  cron.schedule("*/5 * * * *", async () => {
+  cron.schedule("*/15 * * * *", async () => {
     const startTime = new Date();
 
     try {

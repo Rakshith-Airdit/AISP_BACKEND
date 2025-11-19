@@ -242,7 +242,7 @@ const formatDate = (timestamp) => {
 };
 
 // Background Job: Run every 5 min to update PO HEADS, ITEMS, ESLL
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/15 * * * *", async () => {
   await fetchAndStorePOHeads();
   await fetchAndStorePOItems();
   await fetchAndStoreESLL();

@@ -640,7 +640,7 @@ async function storeASNUpdateItem(data) {
 }
 
 //Cron job to run every second and fetch and store ASN data
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/15 * * * *", async () => {
   // Fetch ASN Update Head and Item data from the API
   const asnUpdateHeadData = await fetchASNUpdateHead();
   const asnUpdateItemData = await fetchASNUpdateItem();

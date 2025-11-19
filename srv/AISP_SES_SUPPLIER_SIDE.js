@@ -38,9 +38,8 @@ const {
   buildUnsetStage,
 } = require("../srv/Library/Aggregation");
 
-const connectionString =
-  cds.env.requires.azure_storage?.connectionString;
-const containerName = cds.env.requires.azure_storage?.container_name;
+const connectionString = process.env.AZURE_STORAGE_CONTAINER_STRING;
+const containerName = process.env.AZURE_STORAGE_CONNECTION_NAME;
 
 const mimeToExtensionMap = {
   "image/jpeg": "jpg",
@@ -1240,7 +1239,7 @@ module.exports = async (srv) => {
     }
   });
 
-  cron.schedule("*/5 * * * *", async () => {
+  cron.schedule("*/15 * * * *", async () => {
     try {
       const [headData, itemData] = await Promise.all([
         fetchAllHeadData(),

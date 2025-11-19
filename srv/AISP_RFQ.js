@@ -10,9 +10,8 @@ const {
   updateQuotationItemsInS4,
 } = require("./Library/RFQConfirmation");
 
-const connectionString =
-  cds.env.requires.azure_storage?.connectionString;
-const containerName = cds.env.requires.azure_storage?.container_name;
+const connectionString = process.env.AZURE_STORAGE_CONTAINER_STRING;
+const containerName = process.env.AZURE_STORAGE_CONNECTION_NAME;
 
 const mimeToExtensionMap = {
   "image/jpeg": "jpg",
@@ -3433,7 +3432,7 @@ module.exports = async (srv) => {
   });
 
   // Cron job to fetch and update RFQ records every 15 minutes
-  cron.schedule("*/5 * * * *", async () => {
+  cron.schedule("*/15 * * * *", async () => {
     try {
       // Fetch data in parallel
       const [headerData, itemData] = await Promise.all([
@@ -3464,7 +3463,6 @@ module.exports = async (srv) => {
       if (itemData.length > 0) {
         await storeRFQItemsBulk(itemData, rfqItemColl);
       }
-
     } catch (err) {
       console.error("[CRON] RFQ sync failed:", err.message);
     }

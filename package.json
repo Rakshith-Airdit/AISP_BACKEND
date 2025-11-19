@@ -17,6 +17,7 @@
     "@sap/xssec": "^4",
     "axios": "^1.10.0",
     "axios-cookiejar-support": "^6.0.2",
+    "dotenv": "^17.2.3",
     "exceljs": "^4.4.0",
     "express": "^4.21.2",
     "file-type": "^16.5.4",
@@ -46,10 +47,7 @@
     "requires": {
       "auth": "dummy",
       "connectivity": true,
-      "azure_storage": {
-        "container_name": "{{AZURE_STORAGE_CONTAINER_NAME}}",
-        "connection_string": "{{AZURE_STORAGE_CONNECTION_STRING}}"
-      },
+      
       "AIRDIT_HANA_S4P_CC": {
         "kind": "rest",
         "csrf": true,

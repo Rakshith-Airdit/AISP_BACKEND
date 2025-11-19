@@ -16,9 +16,8 @@ const { status } = require("express/lib/response");
 const { buildMongoQuery } = require("../srv/Library/MongoHelper");
 const { Decimal128 } = require("mongodb");
 
-const connectionString =
-  cds.env.requires.azure_storage?.connectionString;
-const containerName = cds.env.requires.azure_storage?.container_name;
+const connectionString = process.env.AZURE_STORAGE_CONTAINER_STRING;
+const containerName = process.env.AZURE_STORAGE_CONNECTION_NAME;
 
 // Allowed MIME Types and Extensions
 const mimeToExtensionMap = {
@@ -406,10 +405,8 @@ module.exports = async (srv) => {
         if (result && result.ApprovalLevel === maxApproverLevel) {
           // ===>  SAP batch trigger
           try {
-            const response = await sendPostPayloadToSAPforSESVim(
-              RNumber
-            );
-            const sapMessages = response.sapMessages
+            const response = await sendPostPayloadToSAPforSESVim(RNumber);
+            const sapMessages = response.sapMessages;
             console.log(sapMessages);
 
             const errorMsg = sapMessages.find(
@@ -929,9 +926,15 @@ async function insertData(
 
       // Check result and log success/failure details
       if (result.acknowledged && result.insertedId) {
-        console.log(`Successfully inserted document into ${collectionName}:`, result.insertedId);
+        console.log(
+          `Successfully inserted document into ${collectionName}:`,
+          result.insertedId
+        );
       } else {
-        console.error(`Failed to insert document into ${collectionName}:`, result);
+        console.error(
+          `Failed to insert document into ${collectionName}:`,
+          result
+        );
         throw new Error(`Failed to insert document into ${collectionName}`);
       }
     } catch (error) {

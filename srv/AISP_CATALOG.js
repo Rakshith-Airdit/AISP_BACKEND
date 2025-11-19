@@ -94,9 +94,9 @@ const isBase64 = (str) => {
   return !(str.startsWith("http://") || str.startsWith("https://"));
 };
 
-const connectionString = cds.env.requires.azure_storage?.connectionString;
+const connectionString = process.env.AZURE_STORAGE_CONTAINER_STRING;
 
-const containerName = cds.env.requires.azure_storage?.container_name;
+const containerName = process.env.AZURE_STORAGE_CONNECTION_NAME;
 
 const mimeToExtensionMap = {
   "image/jpeg": "jpg",

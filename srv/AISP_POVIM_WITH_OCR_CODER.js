@@ -28,9 +28,8 @@ const { buildMongoQuery } = require("../srv/Library/MongoHelper");
 const { mongoRead } = require("./Library/helper");
 const { Decimal128 } = require("mongodb");
 
-const connectionString =
-  cds.env.requires.azure_storage?.connectionString;
-const containerName = cds.env.requires.azure_storage?.container_name;
+const connectionString = process.env.AZURE_STORAGE_CONTAINER_STRING;
+const containerName = process.env.AZURE_STORAGE_CONNECTION_NAME;
 
 // Allowed MIME Types and Extensions
 const mimeToExtensionMap = {
@@ -242,7 +241,7 @@ async function fetchAndStorePOOCRItem() {
 }
 
 module.exports = async (srv) => {
-  cron.schedule("*/5 * * * *", async () => {
+  cron.schedule("*/15 * * * *", async () => {
     await fetchAndStorePOOCRHead();
     await fetchAndStorePOOCRItem();
   });
