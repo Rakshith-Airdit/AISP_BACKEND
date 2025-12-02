@@ -15,7 +15,7 @@
     "@sap-cloud-sdk/resilience": "^4.0.2",
     "@sap/cds": "^7.3.1",
     "@sap/xssec": "^4",
-    "axios": "^1.10.0",
+    "axios": "^1.13.2",
     "axios-cookiejar-support": "^6.0.2",
     "dotenv": "^17.2.3",
     "exceljs": "^4.4.0",
@@ -26,7 +26,7 @@
     "mongodb": "^6.15.0",
     "node-cron": "^3.0.3",
     "node-fetch": "^2.7.0",
-    "nodemailer": "^6.10.0",
+    "nodemailer": "^6.10.1",
     "passport": "^0.7.0",
     "qs": "^6.14.0",
     "sap-hdbext-promisfied": "^2.202503.1",
@@ -47,7 +47,6 @@
     "requires": {
       "auth": "dummy",
       "connectivity": true,
-      
       "AIRDIT_HANA_S4P_CC": {
         "kind": "rest",
         "csrf": true,
