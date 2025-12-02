@@ -1,24 +1,21 @@
-//NodeMailer to sending Mail
-
-const cds = require("@sap/cds");
-
-var nodemailer = require("nodemailer");
-
 // const { SYSTEM } = require("@sap/xssec/lib/constants");
+const cds = require("@sap/cds");
+const nodemailer = require("nodemailer");
 const DBConn = require("./DBConn");
+
 module.exports = {
   getEmailConfig: async function () {
     try {
       const { database } = await DBConn.getConnection();
       const collection = database.collection("EMAIL_CONFIGURATION");
       const queryResult = await collection.findOne({ SRNO: 1 });
-      // await client.close();
       return queryResult;
     } catch (err) {
       console.error("Error fetching email configuration:", err);
       throw err;
     }
   },
+
   sendEmail: async function (
     ToEmails,
     CCEmail,
@@ -32,7 +29,7 @@ module.exports = {
       const transporter = nodemailer.createTransport({
         host: lvEmailConfig.HOST,
         port: lvEmailConfig.PORT,
-        secure: lvEmailConfig.SECURE, // STARTTLS
+        secure: lvEmailConfig.SECURE,
         auth: {
           user: lvEmailConfig.USERNAME,
           pass: lvEmailConfig.PASSWORD,
@@ -41,7 +38,7 @@ module.exports = {
       var senderEmail = lvEmailConfig.SENDER_EMAIL;
       // var sToEmails = ToEmails.toString();
       // var sCCEmail = CCEmail.toString();
-      // CCEmail = 'vaibhavdesai220@gmail.com'
+      // CCEmail = 'zuheb@airditsoftware.com'
       if (type == "html") {
         var mailOptions = {
           from: senderEmail,
@@ -49,7 +46,7 @@ module.exports = {
           cc: CCEmail,
           subject: subject,
           html: body,
-          attachments: attachments || [], // Attachments array
+          attachments: attachments || [],
         };
       } else {
         var mailOptions = {
@@ -89,8 +86,6 @@ module.exports = {
       // Return success status if email is sent
       return { success: true, mailres }; //new
     } catch (error) {
-      // throw (error);  old
-      // Return failure status if there is an error
       console.log(error.message, "error msg in emailJS");
       return { success: false, error: error.message }; //new
     }

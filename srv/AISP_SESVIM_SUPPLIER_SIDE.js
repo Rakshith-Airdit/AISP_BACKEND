@@ -730,7 +730,7 @@ module.exports = async (srv) => {
         await lib_email
           .sendEmail(
             approverDetails.CURRENT_ASSIGNEE,
-            "vaibhavdesai220@gmail.com", // CC recipient
+            "zuheb@airditsoftware.com", // CC recipient
             "html",
             emailSubject,
             emailBody
@@ -929,7 +929,7 @@ module.exports = async (srv) => {
 
               await lib_email.sendEmail(
                 currentApprover.USER_ID,
-                "vaibhavdesai220@gmail.com",
+                "zuheb@airditsoftware.com",
                 "html",
                 emailSubject,
                 emailBody
@@ -1124,7 +1124,7 @@ module.exports = async (srv) => {
 
         await lib_email.sendEmail(
           approverDetails.CURRENT_ASSIGNEE,
-          "vaibhavdesai220@gmail.com", // CC to the admin or responsible person
+          "zuheb@airditsoftware.com", // CC to the admin or responsible person
           "html",
           emailSubject,
           emailBody

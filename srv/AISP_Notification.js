@@ -192,7 +192,7 @@ module.exports = async function (srv) {
   // ------------------------- SUPPLIER DETAILS -------------------------
 srv.on('READ', 'SupplierDetails', async (req) => {
   try {
-    const ConERP = await cds.connect.to("AIRDIT_HANA_S4P_CC");
+    const ConERP = await cds.connect.to("s4p_https");
 
     // Business partners with address expand
     const bpResult = await ConERP.send({

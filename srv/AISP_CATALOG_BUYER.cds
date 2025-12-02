@@ -6,8 +6,6 @@ using {
 
 
 service CatalogBuyerService {
-
-    // Products entity (supplier-owned)
     entity ProductCatalogItems : cuid, managed {
         key ProductId            : String
             @(cds.on.insert: $uuid)
@@ -75,7 +73,8 @@ service CatalogBuyerService {
             @sap.quickinfo : 'Indicates if the current user has favorited this product'
     }
 
-    // Buyer Favorites entity (buyer-specific preferences)
+    entity ProductCatalogCommodityCodes as projection on Procurement.CommodityCodes;
+
     entity BuyerFavorites : cuid, managed {
         key FavoriteId   : String
                            @(cds.on.insert: $uuid)
@@ -97,20 +96,122 @@ service CatalogBuyerService {
                            @sap.quickinfo : 'Reference to the favorited product';
     }
 
-    action addToFavorites(productId: String)      returns {
+    entity DistinctProductNames         as
+        projection on ProductCatalogItems {
+            key ProductId   : String,
+                ProductName : String(100)
+        }
+
+    action addToFavorites(productId: String)                          returns {
         success    : Boolean;
         message    : String;
         favoriteId : String;
     };
 
-    action removeFromFavorites(productId: String) returns {
+    action removeFromFavorites(productId: String)                     returns {
         success : Boolean;
         message : String;
     };
 
-    action toggleFavorite(productId: String)      returns {
+    action toggleFavorite(productId: String)                          returns {
         success    : Boolean;
         isFavorite : Boolean;
         message    : String;
     };
+
+    type ProductData : {
+        @sap.Label: 'Product Name'         @sap.quickinfo: 'Name of the product'
+        ProductName        : String;
+
+        @sap.Label: 'Product Description'  @sap.quickinfo: 'Description of the product'
+        ProductDescription : String;
+
+        @sap.Label: 'Unit of Measure'      @sap.quickinfo: 'Unit of measurement for the product'
+        UnitOfMeasure      : String;
+
+        @sap.Label: 'Unit Price'           @sap.quickinfo: 'Price per unit of the product'
+        UnitPrice          : Decimal(15, 2);
+
+        @sap.Label: 'Part Number'          @sap.quickinfo: 'Part number for the product'
+        PartNo             : String;
+
+        @sap.Label: 'Commodity Code'       @sap.quickinfo: 'Code representing the commodity'
+        CommodityCode      : String;
+
+        @sap.Label: 'Currency Code'        @sap.quickinfo: 'Currency for the product price'
+        CurrencyCode       : String;
+
+        @sap.Label: 'Quantity'             @sap.quickinfo: 'Quantity of the product'
+        quantity           : Integer;
+
+        @sap.Label: 'Total Price'          @sap.quickinfo: 'Total price for the product'
+        totalPrice         : Decimal(15, 2)
+    }
+
+    action triggerProductRequestEmail(
+                                      @sap.Label: 'Receiver Email'  @sap.quickinfo: 'The receiver of the information'
+                                      receiver: String,
+
+                                      @sap.Label: 'Supplier Name'  @sap.quickinfo: 'Name of the supplier'
+                                      SupplierName: String,
+
+                                      @sap.Label: 'Buyer Company Name'  @sap.quickinfo: 'Name of the buyer company'
+                                      BuyerCompanyName: String,
+
+                                      @sap.Label: 'Buyer Name'  @sap.quickinfo: 'Name of the buyer'
+                                      BuyerName: String,
+
+                                      @sap.Label: 'Buyer Contact Information'  @sap.quickinfo: 'Contact details of the buyer'
+                                      BuyerContactInfo: String,
+
+                                      @sap.Label: 'Buyer Email Address'  @sap.quickinfo: 'Email address of the buyer'
+                                      BuyerEmailAddress: String,
+
+                                      Products: array of ProductData) returns {
+        message  : String;
+        queue_id : String;
+        event    : String;
+    };
 }
+
+
+// action triggerProductRequestEmail(
+//                                   @sap.Label: 'Receiver Email'  @sap.quickinfo: 'The receiver of the information'
+//                                   receiver: String,
+
+//                                   @sap.Label: 'Supplier Name'  @sap.quickinfo: 'Name of the supplier'
+//                                   SupplierName: String,
+
+//                                   @sap.Label: 'Buyer Company Name'  @sap.quickinfo: 'Name of the buyer company'
+//                                   BuyerCompanyName: String,
+
+//                                   @sap.Label: 'Product Name'  @sap.quickinfo: 'Name of the product'
+//                                   ProductName: String,
+
+//                                   @sap.Label: 'Product Description'  @sap.quickinfo: 'Description of the product'
+//                                   ProductDescription: String,
+
+//                                   @sap.Label: 'Unit of Measure'  @sap.quickinfo: 'Unit of measurement for the product'
+//                                   UnitOfMeasure: String,
+
+//                                   @sap.Label: 'Unit Price'  @sap.quickinfo: 'Price per unit of the product'
+//                                   UnitPrice: Decimal(15, 2),
+
+//                                   @sap.Label: 'Part Number'  @sap.quickinfo: 'Part number for the product'
+//                                   PartNo: String,
+
+//                                   @sap.Label: 'Commodity Code'  @sap.quickinfo: 'Code representing the commodity'
+//                                   CommodityCode: String,
+
+//                                   @sap.Label: 'Buyer Name'  @sap.quickinfo: 'Name of the buyer'
+//                                   BuyerName: String,
+
+//                                   @sap.Label: 'Buyer Contact Information'  @sap.quickinfo: 'Contact details of the buyer'
+//                                   BuyerContactInfo: String,
+
+//                                   @sap.Label: 'Buyer Email Address'  @sap.quickinfo: 'Email address of the buyer'
+//                                   BuyerEmailAddress: String, ) returns {
+//     message  : String;
+//     queue_id : String;
+//     event    : String;
+// };

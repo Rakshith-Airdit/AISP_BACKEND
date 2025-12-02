@@ -752,8 +752,7 @@ module.exports = async (srv) => {
           if (sapResponse.status === "Error") {
             return req.reject(
               500,
-              `SAP Posting failed: ${
-                sapResponse.sapErrors?.[0]?.message || "Unknown error"
+              `SAP Posting failed: ${sapResponse.sapErrors?.[0]?.message || "Unknown error"
               }`
             );
           }
