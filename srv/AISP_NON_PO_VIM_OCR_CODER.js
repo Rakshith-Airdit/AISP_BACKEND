@@ -18,9 +18,9 @@ const { Decimal128 } = require("mongodb");
 
 // const connectionString =
 //   cds.env.requires.azure_storage?.connectionString;
-const connectionString = cds.env.requires.azure_storage?.connectionString;
+const connectionString = process.env.AZURE_STORAGE_CONTAINER_STRING;
 // const containerName = cds.env.requires.azure_storage?.container_name;
-const containerName = cds.env.requires.azure_storage?.container_name;
+const containerName = process.env.AZURE_STORAGE_CONNECTION_NAME;
 
 const mimeToExtensionMap = {
   "image/jpeg": "jpg",
@@ -348,7 +348,7 @@ module.exports = async (srv) => {
         await lib_email
           .sendEmail(
             approverDetails.CURRENT_ASSIGNEE,
-            "vaibhavdesai220@gmail.com", // CC recipient
+            "zuheb@airditsoftware.com", // CC recipient
             "html",
             emailSubject,
             emailBody
@@ -496,7 +496,7 @@ module.exports = async (srv) => {
 
               await lib_email.sendEmail(
                 currentApprover.USER_ID,
-                "vaibhavdesai220@gmail.com",
+                "zuheb@airditsoftware.com",
                 "html",
                 emailSubject,
                 emailBody
@@ -725,7 +725,7 @@ module.exports = async (srv) => {
 
         await lib_email.sendEmail(
           approverDetails.CURRENT_ASSIGNEE,
-          "vaibhavdesai220@gmail.com", // CC to the admin or responsible person
+          "zuheb@airditsoftware.com", // CC to the admin or responsible person
           "html",
           emailSubject,
           emailBody

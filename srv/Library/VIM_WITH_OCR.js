@@ -95,7 +95,7 @@ async function sendPostPayloadToSAPforCreateVimWithOCR(REQUEST_NO) {
   };
 
   try {
-    const ConERP = await cds.connect.to("AIRDIT_HANA_S4P_CC");
+    const ConERP = await cds.connect.to("s4p_https");
     const url = "/API_SUPPLIERINVOICE_PROCESS_SRV/A_SupplierInvoice";
 
     const response = await ConERP.send({
@@ -190,7 +190,7 @@ async function sendPostPayloadToSAPforCreateVimWithOutOCR(REQUEST_NO) {
   };
 
   try {
-    const ConERP = await cds.connect.to("AIRDIT_HANA_S4P_CC");
+    const ConERP = await cds.connect.to("s4p_https");
     const url = "/API_SUPPLIERINVOICE_PROCESS_SRV/A_SupplierInvoice";
 
     const response = await ConERP.send({
@@ -269,7 +269,7 @@ async function sendPostPayloadToSAPforCreateNPOInvoice(REQUEST_NO) {
   };
 
   try {
-    const ConERP = await cds.connect.to("AIRDIT_HANA_S4P_CC");
+    const ConERP = await cds.connect.to("s4p_https");
     const url = "/API_SUPPLIERINVOICE_PROCESS_SRV/A_SupplierInvoice";
 
     const response = await ConERP.send({
@@ -322,7 +322,7 @@ async function createASNBatch({ asnHead, asnItems, DeliveryDate }) {
   };
 
   try {
-    const ConERP = await cds.connect.to("AIRDIT_HANA_S4P_CC");
+    const ConERP = await cds.connect.to("s4p_https");
     const url = "/API_INBOUND_DELIVERY_SRV;v=0002/A_InbDeliveryHeader";
 
     const response = await ConERP.send({

@@ -57,10 +57,8 @@
                 xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
                 <EntityType Name="ZC_AISP_BD_MY_BUSINESSType" sap:label="Buss.Dash.- My Business(PO Value- Y2D,M)" sap:content-version="1">
                     <Key>
-                        <PropertyRef Name="p_vendorcode"/>
                         <PropertyRef Name="VendorCode"/>
                     </Key>
-                    <Property Name="p_vendorcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier"/>
                     <Property Name="VendorCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
                     <Property Name="PoValue_Y2D" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="TotalAmountCurrency" sap:variable-scale="true" sap:label="Net Price"/>
                     <Property Name="PoValue_Jan" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="TotalAmountCurrency" sap:variable-scale="true" sap:label="Net Price"/>
@@ -76,21 +74,11 @@
                     <Property Name="PoValue_Nov" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="TotalAmountCurrency" sap:variable-scale="true" sap:label="Net Price"/>
                     <Property Name="PoValue_Dec" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="TotalAmountCurrency" sap:variable-scale="true" sap:label="Net Price"/>
                     <Property Name="TotalAmountCurrency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
-                    <NavigationProperty Name="Parameters" Relationship="cds_zc_aisp_busi_dash_srv.assoc_3D51966A2F7330516F08FB826F1E1453" FromRole="ToRole_assoc_3D51966A2F7330516F08FB826F1E1453" ToRole="FromRole_assoc_3D51966A2F7330516F08FB826F1E1453" sap:filterable="false"/>
-                </EntityType>
-                <EntityType Name="ZC_AISP_BD_MY_BUSINESSParameters" sap:semantics="parameters" sap:content-version="1">
-                    <Key>
-                        <PropertyRef Name="p_vendorcode"/>
-                    </Key>
-                    <Property Name="p_vendorcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Supplier" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                    <NavigationProperty Name="Set" Relationship="cds_zc_aisp_busi_dash_srv.assoc_3D51966A2F7330516F08FB826F1E1453" FromRole="FromRole_assoc_3D51966A2F7330516F08FB826F1E1453" ToRole="ToRole_assoc_3D51966A2F7330516F08FB826F1E1453"/>
                 </EntityType>
                 <EntityType Name="ZC_AISP_BD_MY_COMMITMENTSType" sap:label="Buss.Dash- Top5 Contracts based on Value" sap:content-version="1">
                     <Key>
-                        <PropertyRef Name="p_vendorcode"/>
                         <PropertyRef Name="VendorCode"/>
                     </Key>
-                    <Property Name="p_vendorcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier"/>
                     <Property Name="VendorCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
                     <Property Name="PurchaseContract" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
                     <Property Name="ValidityStartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Validity Per. Start" sap:quickinfo="Start of Validity Period"/>
@@ -100,42 +88,22 @@
                     <Property Name="TotalValueCurrency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
                     <Property Name="TotalOrderedQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="TotalOrderedQuantityUnit" sap:label="Order Quantity" sap:quickinfo="Purchase Order Quantity"/>
                     <Property Name="TotalOrderedQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
-                    <NavigationProperty Name="Parameters" Relationship="cds_zc_aisp_busi_dash_srv.assoc_47D42CE36125DD134A5C1F6A51DD5931" FromRole="ToRole_assoc_47D42CE36125DD134A5C1F6A51DD5931" ToRole="FromRole_assoc_47D42CE36125DD134A5C1F6A51DD5931" sap:filterable="false"/>
-                </EntityType>
-                <EntityType Name="ZC_AISP_BD_MY_COMMITMENTSParameters" sap:semantics="parameters" sap:content-version="1">
-                    <Key>
-                        <PropertyRef Name="p_vendorcode"/>
-                    </Key>
-                    <Property Name="p_vendorcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Supplier" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                    <NavigationProperty Name="Set" Relationship="cds_zc_aisp_busi_dash_srv.assoc_47D42CE36125DD134A5C1F6A51DD5931" FromRole="FromRole_assoc_47D42CE36125DD134A5C1F6A51DD5931" ToRole="ToRole_assoc_47D42CE36125DD134A5C1F6A51DD5931"/>
                 </EntityType>
                 <EntityType Name="ZC_AISP_BD_TOP5_OPEN_POType" sap:label="Buss. Dash.- Top5 Open PO (PO Value)" sap:content-version="1">
                     <Key>
-                        <PropertyRef Name="p_vendorcode"/>
                         <PropertyRef Name="VendorCode"/>
                     </Key>
-                    <Property Name="p_vendorcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier"/>
                     <Property Name="VendorCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
                     <Property Name="PoNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Purchasing Document" sap:quickinfo="Purchasing Document Number"/>
                     <Property Name="TotalAmount" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="TotalAmountCurrency" sap:variable-scale="true" sap:label="Net Price"/>
                     <Property Name="TotalAmountCurrency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
                     <Property Name="TotalOrderedQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="TotalOrderedQuantityUnit" sap:label="Order Quantity" sap:quickinfo="Purchase Order Quantity"/>
                     <Property Name="TotalOrderedQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
-                    <NavigationProperty Name="Parameters" Relationship="cds_zc_aisp_busi_dash_srv.assoc_3ECA1D2F271044D903F78FD299AD1EC3" FromRole="ToRole_assoc_3ECA1D2F271044D903F78FD299AD1EC3" ToRole="FromRole_assoc_3ECA1D2F271044D903F78FD299AD1EC3" sap:filterable="false"/>
-                </EntityType>
-                <EntityType Name="ZC_AISP_BD_TOP5_OPEN_POParameters" sap:semantics="parameters" sap:content-version="1">
-                    <Key>
-                        <PropertyRef Name="p_vendorcode"/>
-                    </Key>
-                    <Property Name="p_vendorcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Supplier" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                    <NavigationProperty Name="Set" Relationship="cds_zc_aisp_busi_dash_srv.assoc_3ECA1D2F271044D903F78FD299AD1EC3" FromRole="FromRole_assoc_3ECA1D2F271044D903F78FD299AD1EC3" ToRole="ToRole_assoc_3ECA1D2F271044D903F78FD299AD1EC3"/>
                 </EntityType>
                 <EntityType Name="ZC_AISP_BD_TOP5_PRODUCTSType" sap:label="Buss. Dashboard - Top5 Products (PO Qty)" sap:content-version="1">
                     <Key>
-                        <PropertyRef Name="p_vendorcode"/>
                         <PropertyRef Name="VendorCode"/>
                     </Key>
-                    <Property Name="p_vendorcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier"/>
                     <Property Name="VendorCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/>
                     <Property Name="MaterialNo" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
                     <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Short Text"/>
@@ -143,14 +111,6 @@
                     <Property Name="TotalOrderedQuantityUnit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
                     <Property Name="TotalAmount" Type="Edm.Decimal" Precision="11" Scale="3" sap:unit="TotalAmountCurrency" sap:variable-scale="true" sap:label="Net Price"/>
                     <Property Name="TotalAmountCurrency" Type="Edm.String" MaxLength="5" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
-                    <NavigationProperty Name="Parameters" Relationship="cds_zc_aisp_busi_dash_srv.assoc_865B138CAF8F25F033409AA9C2B24FFD" FromRole="ToRole_assoc_865B138CAF8F25F033409AA9C2B24FFD" ToRole="FromRole_assoc_865B138CAF8F25F033409AA9C2B24FFD" sap:filterable="false"/>
-                </EntityType>
-                <EntityType Name="ZC_AISP_BD_TOP5_PRODUCTSParameters" sap:semantics="parameters" sap:content-version="1">
-                    <Key>
-                        <PropertyRef Name="p_vendorcode"/>
-                    </Key>
-                    <Property Name="p_vendorcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:parameter="mandatory" sap:label="Supplier" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                    <NavigationProperty Name="Set" Relationship="cds_zc_aisp_busi_dash_srv.assoc_865B138CAF8F25F033409AA9C2B24FFD" FromRole="FromRole_assoc_865B138CAF8F25F033409AA9C2B24FFD" ToRole="ToRole_assoc_865B138CAF8F25F033409AA9C2B24FFD"/>
                 </EntityType>
                 <EntityType Name="SAP__Currency" sap:content-version="1">
                     <Key>
@@ -171,201 +131,17 @@
                     <Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Measurement Unit Txt"/>
                     <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
                 </EntityType>
-                <Association Name="assoc_3D51966A2F7330516F08FB826F1E1453" sap:content-version="1">
-                    <End Type="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_BUSINESSParameters" Multiplicity="1" Role="FromRole_assoc_3D51966A2F7330516F08FB826F1E1453"/>
-                    <End Type="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_BUSINESSType" Multiplicity="*" Role="ToRole_assoc_3D51966A2F7330516F08FB826F1E1453"/>
-                </Association>
-                <Association Name="assoc_47D42CE36125DD134A5C1F6A51DD5931" sap:content-version="1">
-                    <End Type="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_COMMITMENTSParameters" Multiplicity="1" Role="FromRole_assoc_47D42CE36125DD134A5C1F6A51DD5931"/>
-                    <End Type="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_COMMITMENTSType" Multiplicity="*" Role="ToRole_assoc_47D42CE36125DD134A5C1F6A51DD5931"/>
-                </Association>
-                <Association Name="assoc_865B138CAF8F25F033409AA9C2B24FFD" sap:content-version="1">
-                    <End Type="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_PRODUCTSParameters" Multiplicity="1" Role="FromRole_assoc_865B138CAF8F25F033409AA9C2B24FFD"/>
-                    <End Type="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_PRODUCTSType" Multiplicity="*" Role="ToRole_assoc_865B138CAF8F25F033409AA9C2B24FFD"/>
-                </Association>
-                <Association Name="assoc_3ECA1D2F271044D903F78FD299AD1EC3" sap:content-version="1">
-                    <End Type="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_OPEN_POParameters" Multiplicity="1" Role="FromRole_assoc_3ECA1D2F271044D903F78FD299AD1EC3"/>
-                    <End Type="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_OPEN_POType" Multiplicity="*" Role="ToRole_assoc_3ECA1D2F271044D903F78FD299AD1EC3"/>
-                </Association>
                 <EntityContainer Name="cds_zc_aisp_busi_dash_srv_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                    <EntitySet Name="ZC_AISP_BD_MY_BUSINESS" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_BUSINESSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                    <EntitySet Name="ZC_AISP_BD_MY_COMMITMENTS" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_COMMITMENTSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                    <EntitySet Name="ZC_AISP_BD_TOP5_OPEN_PO" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_OPEN_POType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                    <EntitySet Name="ZC_AISP_BD_TOP5_PRODUCTS" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_PRODUCTSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                     <EntitySet Name="SAP__Currencies" EntityType="cds_zc_aisp_busi_dash_srv.SAP__Currency" sap:content-version="1"/>
                     <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zc_aisp_busi_dash_srv.SAP__UnitOfMeasure" sap:content-version="1"/>
-                    <EntitySet Name="ZC_AISP_BD_MY_BUSINESSSet" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_BUSINESSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
-                    <EntitySet Name="ZC_AISP_BD_MY_BUSINESS" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_BUSINESSParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                    <EntitySet Name="ZC_AISP_BD_MY_COMMITMENTSSet" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_COMMITMENTSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
-                    <EntitySet Name="ZC_AISP_BD_MY_COMMITMENTS" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_MY_COMMITMENTSParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                    <EntitySet Name="ZC_AISP_BD_TOP5_OPEN_POSet" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_OPEN_POType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
-                    <EntitySet Name="ZC_AISP_BD_TOP5_OPEN_PO" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_OPEN_POParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                    <EntitySet Name="ZC_AISP_BD_TOP5_PRODUCTSSet" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_PRODUCTSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
-                    <EntitySet Name="ZC_AISP_BD_TOP5_PRODUCTS" EntityType="cds_zc_aisp_busi_dash_srv.ZC_AISP_BD_TOP5_PRODUCTSParameters" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
-                    <AssociationSet Name="assoc_3D51966A2F7330516F08FB826F1E1453" Association="cds_zc_aisp_busi_dash_srv.assoc_3D51966A2F7330516F08FB826F1E1453" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
-                        <End EntitySet="ZC_AISP_BD_MY_BUSINESS" Role="FromRole_assoc_3D51966A2F7330516F08FB826F1E1453"/>
-                        <End EntitySet="ZC_AISP_BD_MY_BUSINESSSet" Role="ToRole_assoc_3D51966A2F7330516F08FB826F1E1453"/>
-                    </AssociationSet>
-                    <AssociationSet Name="assoc_47D42CE36125DD134A5C1F6A51DD5931" Association="cds_zc_aisp_busi_dash_srv.assoc_47D42CE36125DD134A5C1F6A51DD5931" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
-                        <End EntitySet="ZC_AISP_BD_MY_COMMITMENTS" Role="FromRole_assoc_47D42CE36125DD134A5C1F6A51DD5931"/>
-                        <End EntitySet="ZC_AISP_BD_MY_COMMITMENTSSet" Role="ToRole_assoc_47D42CE36125DD134A5C1F6A51DD5931"/>
-                    </AssociationSet>
-                    <AssociationSet Name="assoc_865B138CAF8F25F033409AA9C2B24FFD" Association="cds_zc_aisp_busi_dash_srv.assoc_865B138CAF8F25F033409AA9C2B24FFD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
-                        <End EntitySet="ZC_AISP_BD_TOP5_PRODUCTS" Role="FromRole_assoc_865B138CAF8F25F033409AA9C2B24FFD"/>
-                        <End EntitySet="ZC_AISP_BD_TOP5_PRODUCTSSet" Role="ToRole_assoc_865B138CAF8F25F033409AA9C2B24FFD"/>
-                    </AssociationSet>
-                    <AssociationSet Name="assoc_3ECA1D2F271044D903F78FD299AD1EC3" Association="cds_zc_aisp_busi_dash_srv.assoc_3ECA1D2F271044D903F78FD299AD1EC3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
-                        <End EntitySet="ZC_AISP_BD_TOP5_OPEN_PO" Role="FromRole_assoc_3ECA1D2F271044D903F78FD299AD1EC3"/>
-                        <End EntitySet="ZC_AISP_BD_TOP5_OPEN_POSet" Role="ToRole_assoc_3ECA1D2F271044D903F78FD299AD1EC3"/>
-                    </AssociationSet>
                 </EntityContainer>
                 <Annotations Target="cds_zc_aisp_busi_dash_srv.cds_zc_aisp_busi_dash_srv_Entities"
                     xmlns="http://docs.oasis-open.org/odata/ns/edm">
                     <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
-                </Annotations>
-                <Annotations Target="cds_zc_aisp_busi_dash_srv.cds_zc_aisp_busi_dash_srv_Entities/ZC_AISP_BD_MY_BUSINESS"
-                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                    <Annotation Term="Capabilities.FilterRestrictions">
-                        <Record>
-                            <PropertyValue Property="NonFilterableProperties">
-                                <Collection>
-                                    <PropertyPath>p_vendorcode</PropertyPath>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                    <Annotation Term="Capabilities.NavigationRestrictions">
-                        <Record>
-                            <PropertyValue Property="RestrictedProperties">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
-                                        <PropertyValue Property="FilterRestrictions">
-                                            <Record>
-                                                <PropertyValue Property="Filterable" Bool="false"/>
-                                            </Record>
-                                        </PropertyValue>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                    <Annotation Term="Capabilities.SortRestrictions">
-                        <Record>
-                            <PropertyValue Property="NonSortableProperties">
-                                <Collection>
-                                    <PropertyPath>p_vendorcode</PropertyPath>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                </Annotations>
-                <Annotations Target="cds_zc_aisp_busi_dash_srv.cds_zc_aisp_busi_dash_srv_Entities/ZC_AISP_BD_MY_COMMITMENTS"
-                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                    <Annotation Term="Capabilities.FilterRestrictions">
-                        <Record>
-                            <PropertyValue Property="NonFilterableProperties">
-                                <Collection>
-                                    <PropertyPath>p_vendorcode</PropertyPath>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                    <Annotation Term="Capabilities.NavigationRestrictions">
-                        <Record>
-                            <PropertyValue Property="RestrictedProperties">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
-                                        <PropertyValue Property="FilterRestrictions">
-                                            <Record>
-                                                <PropertyValue Property="Filterable" Bool="false"/>
-                                            </Record>
-                                        </PropertyValue>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                    <Annotation Term="Capabilities.SortRestrictions">
-                        <Record>
-                            <PropertyValue Property="NonSortableProperties">
-                                <Collection>
-                                    <PropertyPath>p_vendorcode</PropertyPath>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                </Annotations>
-                <Annotations Target="cds_zc_aisp_busi_dash_srv.cds_zc_aisp_busi_dash_srv_Entities/ZC_AISP_BD_TOP5_OPEN_PO"
-                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                    <Annotation Term="Capabilities.FilterRestrictions">
-                        <Record>
-                            <PropertyValue Property="NonFilterableProperties">
-                                <Collection>
-                                    <PropertyPath>p_vendorcode</PropertyPath>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                    <Annotation Term="Capabilities.NavigationRestrictions">
-                        <Record>
-                            <PropertyValue Property="RestrictedProperties">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
-                                        <PropertyValue Property="FilterRestrictions">
-                                            <Record>
-                                                <PropertyValue Property="Filterable" Bool="false"/>
-                                            </Record>
-                                        </PropertyValue>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                    <Annotation Term="Capabilities.SortRestrictions">
-                        <Record>
-                            <PropertyValue Property="NonSortableProperties">
-                                <Collection>
-                                    <PropertyPath>p_vendorcode</PropertyPath>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                </Annotations>
-                <Annotations Target="cds_zc_aisp_busi_dash_srv.cds_zc_aisp_busi_dash_srv_Entities/ZC_AISP_BD_TOP5_PRODUCTS"
-                    xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                    <Annotation Term="Capabilities.FilterRestrictions">
-                        <Record>
-                            <PropertyValue Property="NonFilterableProperties">
-                                <Collection>
-                                    <PropertyPath>p_vendorcode</PropertyPath>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                    <Annotation Term="Capabilities.NavigationRestrictions">
-                        <Record>
-                            <PropertyValue Property="RestrictedProperties">
-                                <Collection>
-                                    <Record>
-                                        <PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
-                                        <PropertyValue Property="FilterRestrictions">
-                                            <Record>
-                                                <PropertyValue Property="Filterable" Bool="false"/>
-                                            </Record>
-                                        </PropertyValue>
-                                    </Record>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
-                    <Annotation Term="Capabilities.SortRestrictions">
-                        <Record>
-                            <PropertyValue Property="NonSortableProperties">
-                                <Collection>
-                                    <PropertyPath>p_vendorcode</PropertyPath>
-                                </Collection>
-                            </PropertyValue>
-                        </Record>
-                    </Annotation>
                 </Annotations>
                 <Annotations Target="cds_zc_aisp_busi_dash_srv.cds_zc_aisp_busi_dash_srv_Entities"
                     xmlns="http://docs.oasis-open.org/odata/ns/edm">

@@ -21,8 +21,8 @@ const createSupplierQuotationInS4 = async ({ RfqNumber, Bidder }) => {
   // Build the OData function-import URL exactly like your working sample
   const s4Url =
     "http://103.194.234.17:8010/sap/opu/odata/sap/API_QTN_PROCESS_SRV/A_SupplierQuotation";
-  const username = "BHABANI0366";
-  const password = "Bhabani0366";
+  const username = "MAHESH0348";
+  const password = "Teachers50#";
 
   try {
     const csrfResp = await axios.get(s4Url, {
@@ -80,7 +80,7 @@ const createSupplierQuotationInS4 = async ({ RfqNumber, Bidder }) => {
   } catch (error) {
     const sapMsg = error?.response?.data?.error?.message?.value;
     throw {
-      message: "Error creating supplier in S/4HANA : Error ->> " + sapMsg,
+      message: "Error changing status of RFQ in S/4HANA : Error ->> " + sapMsg,
     };
   }
 };
@@ -93,8 +93,8 @@ const updateQuotationItemsInS4 = async ({
   // Build the OData function-import URL exactly like your working sample
   const s4Url =
     "http://103.194.234.17:8010/sap/opu/odata/sap/API_QTN_PROCESS_SRV/A_SupplierQuotation";
-  const username = "BHABANI0366";
-  const password = "Bhabani0366";
+  const username = "MAHESH0348";
+  const password = "Teachers50#";
 
   try {
     // Fetch CSRF token
@@ -187,14 +187,121 @@ const createQuotationAgainstRFQInS4HANA = async (SupplierQuotation) => {
 //Create RFQ
 const createRFQInS4 = async (oPayload) => {
   try {
-    const ConERP = await cds.connect.to("AIRDIT_HANA_S4P_CC");
+    console.clear();
+    console.log(oPayload);
+    const ConERP = await cds.connect.to("s4p_https");
     const url = "/API_RFQ_PROCESS_SRV/A_RequestForQuotation";
     const options = {
       headers: {
         "Content-Type": "application/json",
-        "sap-client": "120",
+        // "sap-client": "120",
       },
     };
+
+    const oData = {
+      "RequestForQuotation": "",
+      "CompanyCode": "1000",
+      "PurchasingDocumentCategory": "R",
+      "PurchasingDocumentType": "RQ",
+      "CreatedByUser": "SHIVA0427",
+      "CreationDate": "/Date(1764237779920)/",
+      "LastChangeDateTime": "/Date(1764237779920)/",
+      "Language": "EN",
+      "PurchasingOrganization": "1100",
+      "PurchasingGroup": "P01",
+      "DocumentCurrency": "INR",
+      "IncotermsClassification": "",
+      "IncotermsTransferLocation": "",
+      "IncotermsVersion": "",
+      "IncotermsLocation1": "",
+      "IncotermsLocation2": "",
+      "PaymentTerms": "",
+      "CashDiscount1Days": "0",
+      "CashDiscount2Days": "0",
+      "CashDiscount1Percent": "0.000",
+      "CashDiscount2Percent": "0.000",
+      "NetPaymentDays": "0",
+      "RFQPublishingDate": "/Date(1764237779920)/",
+      "QuotationLatestSubmissionDate": "/Date(1766016000000)/",
+      "TargetAmount": "1000.00",
+      "CorrespncInternalReference": "",
+      "RFQLifecycleStatus": "02",
+      "RequestForQuotationName": "TEST RFQ Project",
+      "QuotationEarliestSubmsnDate": null,
+      "FollowOnDocumentCategory": "F",
+      "FollowOnDocumentType": "NB",
+      "IsEndOfPurposeBlocked": "",
+      "to_RequestForQuotationItem": [
+        {
+          "RequestForQuotationItem": "1",
+          "RequestForQuotation": "",
+          "PurchasingDocumentCategory": "R",
+          "PurchasingDocumentItemText": "Mouse",
+          "Material": "101000000000000308",
+          "ManufacturerMaterial": "11",
+          "ManufacturerPartNmbr": "",
+          "Manufacturer": "",
+          "MaterialGroup": "002",
+          "Plant": "1000",
+          "ManualDeliveryAddressID": "",
+          "ReferenceDeliveryAddressID": "",
+          "IncotermsClassification": "",
+          "IncotermsTransferLocation": "",
+          "IncotermsLocation1": "",
+          "IncotermsLocation2": "",
+          "ScheduleLineOrderQuantity": "1",
+          "OrderQuantityUnit": "PC",
+          "OrderItemQtyToBaseQtyNmrtr": "1",
+          "OrderItemQtyToBaseQtyDnmntr": "1",
+          "BaseUnit": "EA",
+          "ScheduleLineDeliveryDate": "/Date(1766707200000)/",
+          "PurchaseRequisition": "",
+          "PurchaseRequisitionItem": "0",
+          "IsInfoRecordUpdated": false
+        },
+        {
+          "RequestForQuotationItem": "2",
+          "RequestForQuotation": "",
+          "PurchasingDocumentCategory": "R",
+          "PurchasingDocumentItemText": "LAPTOP",
+          "Material": "101000000000000352",
+          "ManufacturerMaterial": "11",
+          "ManufacturerPartNmbr": "",
+          "Manufacturer": "",
+          "MaterialGroup": "002",
+          "Plant": "1000",
+          "ManualDeliveryAddressID": "",
+          "ReferenceDeliveryAddressID": "",
+          "IncotermsClassification": "",
+          "IncotermsTransferLocation": "",
+          "IncotermsLocation1": "",
+          "IncotermsLocation2": "",
+          "ScheduleLineOrderQuantity": "1",
+          "OrderQuantityUnit": "PC",
+          "OrderItemQtyToBaseQtyNmrtr": "1",
+          "OrderItemQtyToBaseQtyDnmntr": "1",
+          "BaseUnit": "EA",
+          "ScheduleLineDeliveryDate": "/Date(1766707200000)/",
+          "PurchaseRequisition": "",
+          "PurchaseRequisitionItem": "0",
+          "IsInfoRecordUpdated": false
+        }
+      ],
+      "to_RequestForQuotationBidder": [
+        {
+          "RequestForQuotation": "",
+          "PartnerCounter": "1",
+          "PartnerFunction": "BI",
+          "Supplier": "100000"
+        },
+        {
+          "RequestForQuotation": "",
+          "PartnerCounter": "1",
+          "PartnerFunction": "BI",
+          "Supplier": "1000000010"
+        }
+      ]
+    }
 
     const response = await ConERP.send({
       method: "POST",
@@ -202,7 +309,7 @@ const createRFQInS4 = async (oPayload) => {
       headers: {
         "Content-Type": "application/json",
       },
-      data: oPayload,
+      data: oData,
     });
 
     console.log("RFQ create --->>>" + response.d.RequestForQuotation);
@@ -218,7 +325,7 @@ const createRFQInS4 = async (oPayload) => {
 //Award Supplier Against RFQ
 const AwardSupplierAgainstRFQ = async (SupplierQuotation) => {
   try {
-    const ConERP = await cds.connect.to("AIRDIT_HANA_S4P_CC");
+    const ConERP = await cds.connect.to("s4p_https");
     const url =
       `/API_QTN_PROCESS_SRV/SubmitForApproval?SupplierQuotation='${SupplierQuotation}'`;
     const options = {

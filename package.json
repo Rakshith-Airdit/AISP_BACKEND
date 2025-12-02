@@ -47,12 +47,12 @@
     "requires": {
       "auth": "dummy",
       "connectivity": true,
-      "AIRDIT_HANA_S4P_CC": {
+      "s4p_https": {
         "kind": "rest",
         "csrf": true,
         "csrfInBatch": true,
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap"
         }
       },
@@ -60,7 +60,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_MM_POHEAD_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_MM_POHEAD_BND"
         }
       },
@@ -68,7 +68,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_MM_ASNPOHEAD_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_MM_ASNPOHEAD_BND"
         },
         "csrf": true,
@@ -78,7 +78,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_AISP_ASNUPDATE_HEAD_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_AISP_ASNUPDATE_HEAD_BND"
         },
         "csrf": true,
@@ -88,7 +88,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_AISP_POVIM_HEAD_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_AISP_POVIM_HEAD_BND"
         },
         "csrf": true,
@@ -98,7 +98,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_AISP_NPOVIM_HEAD_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_AISP_NPOVIM_HEAD_BND"
         },
         "csrf": true,
@@ -108,7 +108,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZC_AISP_SES_SRV",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZC_AISP_SES_SRV"
         },
         "csrf": true,
@@ -118,7 +118,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_AISP_SESVIM_HEAD_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_AISP_SESVIM_HEAD_BND"
         },
         "csrf": true,
@@ -128,7 +128,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_AISP_SES_UPSES_SRB",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_AISP_SES_UPSES_SRB"
         },
         "csrf": true,
@@ -138,7 +138,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_AISP_PAYMNTMON_HEAD_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_AISP_PAYMNTMON_HEAD_BND"
         },
         "csrf": true,
@@ -148,7 +148,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZC_AISP_RFQ_HDR_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZC_AISP_RFQ_HDR_BND"
         },
         "csrf": true,
@@ -158,14 +158,14 @@
         "kind": "odata-v2",
         "model": "srv/external/ZC_AISP_VALUEHELP_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZC_AISP_VALUEHELP_BND"
         },
         "csrf": true,
         "csrfInBatch": true,
         "[production]": {
           "credentials": {
-            "destination": "AIRDIT_HANA_S4P_CC",
+            "destination": "s4p_https",
             "path": "/sap/opu/odata/sap/ZC_AISP_VALUEHELP_BND"
           }
         }
@@ -174,7 +174,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZP_AISP_POVIM_OCR_HD_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZP_AISP_POVIM_OCR_HD_BND"
         },
         "csrf": true,
@@ -184,7 +184,7 @@
         "kind": "odata-v2",
         "model": "srv/external/API_SUPPLIERINVOICE_PROCESS_SRV",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/API_SUPPLIERINVOICE_PROCESS_SRV"
         },
         "csrf": true,
@@ -194,11 +194,17 @@
         "kind": "odata-v2",
         "model": "srv/external/ZC_AISP_BUSI_DASH_BND",
         "credentials": {
-          "destination": "AIRDIT_HANA_S4P_CC",
+          "destination": "s4p_https",
           "path": "/sap/opu/odata/sap/ZC_AISP_BUSI_DASH_BND"
         },
         "csrf": true,
-        "csrfInBatch": true
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "s4p_https",
+            "path": "/sap/opu/odata/sap/ZC_AISP_BUSI_DASH_BND"
+          }
+        }
       }
     },
     "cov2ap": {

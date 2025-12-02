@@ -95,7 +95,7 @@ module.exports = async function (srv) {
         try {
             // 1. Get Connections
             const { database } = await getConnection();
-            const ConERP = await cds.connect.to("AIRDIT_HANA_S4P_CC");
+            const ConERP = await cds.connect.to("s4p_https");
             
             // 2. Fetch REQUEST_INFO from MongoDB
             const requestInfoCollection = database.collection("REQUEST_INFO");
