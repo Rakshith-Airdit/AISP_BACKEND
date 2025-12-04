@@ -185,9 +185,9 @@ entity Notifications : managed {
 
 
 entity SupplierProfileDetails {
-    SUPPLIER_CODE : Integer;
-    SupplierName  : String; // BusinessPartnerFullName
-    Email         : String; // EmailAddress
+    key SUPPLIER_CODE  : Integer;
+    SupplierName  : String;  // BusinessPartnerFullName
+    Email : String;  // EmailAddress
     // SupplierGroup : String;  // BusinessPartnerGrouping
     Country       : String; // Country
 }
