@@ -1,5 +1,9 @@
 namespace Procurement;
 
+using {managed} from '@sap/cds/common';
+//@odata.draft.enabled //require for automtic draft enablement with odata and cds
+using {ZAPI_BUSINESS_PARTNER as BusinessPartnerAPI} from '../srv/external/ZAPI_BUSINESS_PARTNER';
+
 // RFQ Header
 entity RFQ_PRICE_COMPARISON_HEADER {
     key RfqNumber          : String(20);
@@ -164,30 +168,28 @@ entity SUPPLIER_PROFILE_BANK {
 }
 
 //URVASHI
-using { managed } from '@sap/cds/common';
-//@odata.draft.enabled //require for automtic draft enablement with odata and cds
 
-entity Notifications : managed {   
-    key NotificationID : Integer;
-    NotificationType   : String;
-    Title              : String;
-    Body               : String;
-    Priority           : String;
-    Mail               : Boolean;
-    Schedule           : Boolean;
-    ValidFrom          : Date;
-    ValidTo            : Date;
-    DateTime           : Timestamp;
-    Status             : String;
+entity Notifications : managed {
+    key NotificationID   : Integer;
+        NotificationType : String;
+        Title            : String;
+        Body             : String;
+        Priority         : String;
+        Mail             : Boolean;
+        Schedule         : Boolean;
+        ValidFrom        : Date;
+        ValidTo          : Date;
+        DateTime         : Timestamp;
+        Status           : String;
 }
 
 
 entity SupplierProfileDetails {
-    SUPPLIER_CODE  : Integer;
-    SupplierName  : String;  // BusinessPartnerFullName
-    Email : String;  // EmailAddress
+    SUPPLIER_CODE : Integer;
+    SupplierName  : String; // BusinessPartnerFullName
+    Email         : String; // EmailAddress
     // SupplierGroup : String;  // BusinessPartnerGrouping
-    Country       : String;  // Country
+    Country       : String; // Country
 }
 
 
@@ -1294,3 +1296,22 @@ entity CommodityCodes {
         @sap.label    : 'Number of Products'
         @sap.quickinfo: 'Total number of products in this category';
 }
+
+entity Supplier                  as projection on BusinessPartnerAPI.A_Supplier;
+entity SupplierCompany           as projection on BusinessPartnerAPI.A_SupplierCompany;
+entity SupplierCompanyText       as projection on BusinessPartnerAPI.A_SupplierCompanyText;
+entity SupplierDunning           as projection on BusinessPartnerAPI.A_SupplierDunning;
+entity SupplierPartnerFunc       as projection on BusinessPartnerAPI.A_SupplierPartnerFunc;
+entity SupplierPurchasingOrg     as projection on BusinessPartnerAPI.A_SupplierPurchasingOrg;
+entity SupplierPurchasingOrgText as projection on BusinessPartnerAPI.A_SupplierPurchasingOrgText;
+entity SupplierText              as projection on BusinessPartnerAPI.A_SupplierText;
+entity SupplierWithHoldingTax    as projection on BusinessPartnerAPI.A_SupplierWithHoldingTax;
+
+entity BusinessPartner           as projection on BusinessPartnerAPI.A_BusinessPartner;
+entity BusinessPartnerAddress    as projection on BusinessPartnerAPI.A_BusinessPartnerAddress;
+entity BusinessPartnerBank       as projection on BusinessPartnerAPI.A_BusinessPartnerBank;
+entity BusinessPartnerContact    as projection on BusinessPartnerAPI.A_BusinessPartnerContact;
+entity BusinessPartnerRole       as projection on BusinessPartnerAPI.A_BusinessPartnerRole;
+entity BusinessPartnerTaxNumber  as projection on BusinessPartnerAPI.A_BusinessPartnerTaxNumber;
+
+entity EmailAddresses as projection on BusinessPartnerAPI.A_AddressEmailAddress;

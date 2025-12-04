@@ -37,11 +37,18 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7"
+    "@sap/cds-dk": "^7",
+    "cds-plugin-ui5": "^0.13.0",
+    "rimraf": "^5.0.5",
+    "mbt": "^1.2.29"
   },
   "scripts": {
     "start": "cds-serve",
-    "dev": "cds w --port 4005"
+    "dev": "cds w --port 4005",
+    "watch-supplier_selection": "cds watch --open com.supplierselection.supplierselection/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy AISP_PO_ASN_FLOW --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
   },
   "cds": {
     "requires": {
@@ -55,6 +62,16 @@
           "destination": "s4p_https",
           "path": "/sap/opu/odata/sap"
         }
+      },
+      "ZAPI_BUSINESS_PARTNER": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZAPI_BUSINESS_PARTNER",
+        "credentials": {
+          "destination": "s4p_https",
+          "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER"
+        },
+        "csrf": true,
+        "csrfInBatch": true
       },
       "ZP_MM_POHEAD_BND": {
         "kind": "odata-v2",
@@ -210,5 +227,12 @@
     "cov2ap": {
       "plugin": true
     }
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/supplier_selection",
+    "app/supplier_selection"
+  ]
 }
